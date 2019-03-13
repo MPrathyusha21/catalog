@@ -1,0 +1,47 @@
+ {% include 'nav.html' %}
+<div class="main">
+{% block content %}
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	        <div class="alert alert-success alert-dismissable animated fadeIn">
+	            {% for message in messages %}
+	            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	            <p class="h4"><strong>{{ message }}</strong></p>
+	            {% endfor %}
+	        </div>
+	{% endif %}	    
+{% endwith %}
+{% if 'username' in session %}
+<center><button type="button" class="btn btn-warning" style="margin: 5px 0px 5px 25px;background-color:#ac3939"><a href="{{url_for('addBookInformation',objname=obj1.name)}}" style="text-decoration: none;color:black;"><strong>Add Book Details</strong></a></button>
+
+{% endif %}
+<div class="row" style="margin: 10px;">
+{% for obj3 in obj2 %}
+
+	<div class="col-sm-4 text-center">
+		<div class="panel panel-primary">
+			<div style="background-color:#1a000d"class="panel-heading">
+				<h4>{{ obj3.name }}</h4>
+			</div>
+			<div style="background-color:#4d1300;color:#DF7367"class="panel-body text-center">
+				<table>
+					<tr><th>NAME</th><td>:</td><td><h5>{{ obj3.name }}</h5></td></tr>
+					<tr><th>YEAR</th><td>:</td><td><h5>{{ obj3.year }}</h5></td></tr>
+					<tr><th>BOOKTYPE</th><td>:</td><td><h5>{{ obj3.booktype }}</h5></td></tr>
+					<tr><th>AUTHOR</th><td>:</td><td><h5>{{ obj3.author }}</h5></td></tr>
+					<tr><th>PRICE</th><td>:</td><td><h5>{{ obj3.price }}</h5></td></tr>
+				</table>
+			</div>
+			{% if 'username' in session %}
+			<div style="background-color:#1a000d" class="panel-footer">
+					<button type="button" style="background-color:#717D7E"class="btn btn-info"><a href="{{ url_for('editBookInformation',objid=obj1.id,obj3name=obj3.name) }}"style="text-decoration: none;color:white;">EDIT</a></button>
+					<button type="button" class="btn btn-danger" style="background-color:#B64134"><a href="{{ url_for('deleteBookInformation',objid=obj1.id,obj3name=obj3.name)}}"style="text-decoration: none;color:white;">DELETE</a></button>
+			</div>
+			{% endif %}	
+			
+		</div>
+	</div>
+{% endfor %}
+</div>
+{% endblock content %}
+</div>

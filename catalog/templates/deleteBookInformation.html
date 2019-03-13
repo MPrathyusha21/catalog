@@ -1,0 +1,23 @@
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+
+<center style="margin-left:27%;margin-top:0%"> 
+	<div class="">
+			<div class="text-center">
+				<div class="panel panel-primary" style="width: 38rem;">
+					<form action="{{url_for('deleteBookInformation',objid=objid,obj3name=bookdetails.name)}}" method="POST">
+						<div class="panel-body">
+							<h4 style="color: black">Are you sure you want to delete {{bookdetails.name}}</h4>
+						</div>
+						<div class="panel-footer text-center">
+							<input type="submit" class="btn btn-danger" value="Delete" style="margin-right: 10px;">
+						    <button type="button" class="btn btn-warning"><a href="{{url_for('showBooks',objid=objid)}}">CANCEL</a></button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+	</div>
+{% endblock content %}	
+</div>

@@ -1,0 +1,45 @@
+
+
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+
+<center style="margin-left:25%;margin-top:0%"> 
+<div class="">
+		<div class="mr-sm-2 mb-2 col-sm-8" style="margin: 10px;">
+			<form action="{{ url_for('addBookInformation',objname=objname)}}" method="POST">
+				<div class="panel panel-primary">
+				  <div style="background-color:#4d0000"class="panel-heading bg-success">Add Book Details</div>
+				  <div style="background-color:#AF601A"class="panel-body">
+				  	
+					  <div class="form-group">
+					  	<label style="color:#ecc6d8"class="text-primary" for="name">Enter Book Name:</label>
+					    <input type="name" class="form-control" name="name" placeholder="Enter Book Name:" pattern="[A-Za-z0-9 ]{1,}" title="Allow both characters and numbers only " required>
+					  </div>
+					  <div class="form-group">
+					  	<label style="color:#ecc6d8"class="text-primary" for="year">Enter Published Year:</label>
+					    <input type="text" class="form-control" name="year" placeholder="Enter published year:" pattern="[A-Za-z0-9 ]{1,}" title=
+						"Allow both characters and numbers only " required>
+					  </div>
+					  <div class="form-group">
+					  	<label style="color:#ecc6d8" class="text-primary" for="booktype">Enter book type:</label>
+					    <input type="text" class="form-control" name="booktype" placeholder="Enter book type:" pattern="[A-Za-z0-9 ]{1,}" title="Allow both characters and numbers only " required>
+					  </div>
+					  <div class="form-group">
+					  	<label style="color:#ecc6d8" class="text-primary" for="author">Enter author name:</label>
+					    <input type="text" class="form-control" name="author" placeholder="Enter author name:" pattern="[A-Za-z ]{1,}" title="Allow characters Only" required>
+					  </div>
+					  <div class="form-group">
+					  	<label  style="color:#ecc6d8"class="text-primary" for="price">Enter Book price:</label>
+					    <input type="text" class="form-control" name="price" placeholder="Enter Book price:" pattern="[A-Za-z0-9 ]{1,}" title="Allow both characters and numbers only " required>
+					  </div>
+					  <div class="form-group">
+					    <input type="text" class="form-control " name="bookyardid" value="{{ objname }}" readonly>
+					  </div>
+				  </div> 
+				  <div style="background-color:#4d0000"class="panel-footer text-center"><input type="submit" style="background-color:#c65353"class="btn btn-primary" value="Submit"></div>
+				</div>
+				</form>
+			</div>
+</div>
+{% endblock content %}
